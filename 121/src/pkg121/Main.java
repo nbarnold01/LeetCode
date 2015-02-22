@@ -37,14 +37,17 @@ public class Main {
     }
     
     private static void test1() {
+//     [6,1,3,2,4,7] = 6
         System.out.print(test(new int[]{6,1,3,2,4,7})+"\n");
     }
 
     private static void test2() {
+//      [2,1] = 0
         System.out.print(test(new int[]{2, 1})+"\n");
     }
 
     private static void test3() {
+//      [2,1,4] = 3
         System.out.print(test(new int[]{2, 1, 4})+"\n");
     }
     public static void main(String[] args) {
@@ -53,7 +56,7 @@ public class Main {
         test1();
         test2();
         test3();
-     
+    
     }
 
 }
