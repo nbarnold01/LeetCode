@@ -19,13 +19,9 @@ public class Solution {
 
     private boolean isMateForBracket(char currentBracket, char nextBracket) {
 
-        if ((currentBracket == '[' && nextBracket == ']')
+        return (currentBracket == '[' && nextBracket == ']')
                 || (currentBracket == '(' && nextBracket == ')')
-                || (currentBracket == '{' && nextBracket == '}')) {
-            return true;
-        }
-
-        return false;
+                || (currentBracket == '{' && nextBracket == '}');
 
     }
 
