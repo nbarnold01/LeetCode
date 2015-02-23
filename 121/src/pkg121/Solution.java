@@ -25,6 +25,9 @@ package pkg121;
  [2,1,4] = 3
 
  */
+
+
+
 //two pointers minIndex, max Index
 //maxIndex is the runner
 //minIndex stays put until we find a smaller value

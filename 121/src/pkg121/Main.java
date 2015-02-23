@@ -53,9 +53,8 @@ public class Main {
     public static void main(String[] args) {
         // TODO code application logic here
 
-        test1();
-        test2();
-        test3();
+        test(new int[]{6,1,3,2,4,7});
+        
     
     }
 
