@@ -72,23 +72,27 @@ public class SolutionTest {
 
         while (newResult != null) {
             System.out.println(" ->" + newResult.val);
+            assertEquals(expResult.val, newResult.val);
+            expResult = expResult.next;
             newResult = newResult.next;
         }
 
-        assertEquals(expResult.val, result.val);
+        assertNull(expResult);
+        assertNull(newResult);
+
     }
 
     @Test
     public void testAddTwoThreeDigitNumbers() {
 
-        System.out.println("add Two Single Digit Numbers Less than ten \n");
+        System.out.println("add Two Three Digit Numbers\n");
         ListNode l1 = new ListNode(2);
         l1.next = new ListNode(4);
         l1.next.next = new ListNode(3);
 
         ListNode l2 = new ListNode(5);
-        l1.next = new ListNode(6);
-        l1.next.next = new ListNode(4);
+        l2.next = new ListNode(6);
+        l2.next.next = new ListNode(4);
 
         Solution instance = new Solution();
         ListNode expResult = new ListNode(7);
@@ -99,9 +103,44 @@ public class SolutionTest {
         ListNode newResult = result;
 
         while (newResult != null) {
-            System.out.println(" ->" + newResult.val);
+            System.out.println(" ->" + Integer.toString(newResult.val));
+            assertEquals(expResult.val, newResult.val);
+            expResult = expResult.next;
             newResult = newResult.next;
         }
+
+        assertNull(expResult);
+        assertNull(newResult);
+    }
+
+    @Test
+    public void testAddTwoUnEvenNumbers() {
+
+        System.out.println("add Two numbers where one is longer than the others\n");
+        ListNode l1 = new ListNode(9);
+
+        ListNode l2 = new ListNode(9);
+        l2.next = new ListNode(1);
+        l2.next.next = new ListNode(9);
+
+        Solution instance = new Solution();
+        ListNode expResult = new ListNode(8);
+        expResult.next = new ListNode(2);
+        expResult.next.next = new ListNode(9);
+
+        ListNode result = instance.addTwoNumbers(l1, l2);
+        ListNode newResult = result;
+
+        while (newResult != null) {
+            System.out.println(" ->" + newResult.val);
+            assertEquals(expResult.val, newResult.val);
+            expResult = expResult.next;
+            newResult = newResult.next;
+        }
+
+        assertNull(expResult);
+        assertNull(newResult);
+
     }
 
 }

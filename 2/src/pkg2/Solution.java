@@ -24,32 +24,66 @@ public class Solution {
 
             int currentVal = l1Runner.val + l2Runner.val + carryOver;
 
+            carryOver = 0;
+
             if (answerNode == null) {
                 answerNode = new ListNode(currentVal % 10);
                 answerNodeRunner = answerNode;
 
             } else {
-                
+
                 answerNodeRunner.next = new ListNode(currentVal % 10);
+                answerNodeRunner = answerNodeRunner.next;
 
             }
 
-            carryOver = 0;
-
             if (currentVal >= 10) {
-                carryOver = currentVal / 10;
+                carryOver = 1;
             }
 
             l1Runner = l1Runner.next;
             l2Runner = l2Runner.next;
 
-            if (carryOver > 0) {
-                answerNodeRunner.next = new ListNode(carryOver);
+        }
+
+        //continue the run if the other is null
+        if (l1Runner != null) {
+            while (l1Runner != null) {
+
+                int currentVal = l1Runner.val + carryOver;
+                carryOver = 0;
+
+                if (currentVal >= 10) {
+                    carryOver = 1;
+                }
+
+                answerNodeRunner.next = new ListNode(currentVal % 10);
                 answerNodeRunner = answerNodeRunner.next;
+
+                l1Runner = l1Runner.next;
+            }
+        } else if (l2Runner != null) {
+            while (l2Runner != null) {
+
+                int currentVal = l2Runner.val + carryOver;
+                carryOver = 0;
+
+                if (currentVal >= 10) {
+                    carryOver = 1;
+                }
+
+                answerNodeRunner.next = new ListNode(currentVal % 10);
+                answerNodeRunner = answerNodeRunner.next;
+
+                l2Runner = l2Runner.next;
             }
         }
 
-        if (answerNode==null) {
+        if (carryOver > 0) {
+            answerNodeRunner.next = new ListNode(carryOver);
+        }
+
+        if (answerNode == null) {
             return null;
         }
         return answerNode;
