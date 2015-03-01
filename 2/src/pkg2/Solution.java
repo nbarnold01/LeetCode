@@ -14,65 +14,46 @@ import pkg2.ListNode;
 public class Solution {
 
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        ListNode l1Runner = l1;
+        ListNode l2Runner = l2;
+        int carryOver = 0;
+        ListNode answerNode = null;
+        ListNode answerNodeRunner = null;
 
-        if (l1 == null && l1 == null) {
-            return null;
-        }
+        while (l1Runner != null && l2Runner != null) {
 
-        ListNode answerNode;
-        
-        if (l1.next != null && l2.next != null) {
-            
-            answerNode = addTwoNumbers(l1.next, l2.next);
+            int currentVal = l1Runner.val + l2Runner.val + carryOver;
 
-        }
-
-        if (answerNode != null && answerNode.val > 9) {
-
-            if (l1 == null) {
-
-                l1 = new ListNode(answerNode.val - 9);
+            if (answerNode == null) {
+                answerNode = new ListNode(currentVal % 10);
+                answerNodeRunner = answerNode;
 
             } else {
+                
+                answerNodeRunner.next = new ListNode(currentVal % 10);
 
-                l1.val = answerNode.val - 9;
             }
 
+            carryOver = 0;
+
+            if (currentVal >= 10) {
+                carryOver = currentVal / 10;
+            }
+
+            l1Runner = l1Runner.next;
+            l2Runner = l2Runner.next;
+
+            if (carryOver > 0) {
+                answerNodeRunner.next = new ListNode(carryOver);
+                answerNodeRunner = answerNodeRunner.next;
+            }
         }
 
-        int answer;
-
-        if (l1 != null && l2 != null) {
-
-            answer = l1.val + l2.val;
-
-        } else if (l1 != null) {
-
-            answer = l1.val;
-//            ListNode ans = new ListNode(l1.val);
-//            
-//            answerNode.next = ans;
-
-//            return ans;
-        } else {
-            answer = l2.val;
-
-//            ListNode ans = new ListNode(l2.val);
+        if (answerNode==null) {
+            return null;
         }
-
-        ListNode currentAnswer;
-
-        if (answerNode == null && answer > 9) {
-
-            currentAnswer = new ListNode(answer - 10);
-            currentAnswer.next = new ListNode(1);
-        } else {
-            currentAnswer = new ListNode(answer);
-            currentAnswer.next = answerNode;
-
-        }
-
-        return currentAnswer;
+        return answerNode;
 
     }
+
 }

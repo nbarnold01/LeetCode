@@ -17,26 +17,25 @@ import static org.junit.Assert.*;
  * @author nathanarnold
  */
 public class SolutionTest {
-    
+
     public SolutionTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
-        
-        
+
     }
 
     /**
@@ -51,7 +50,7 @@ public class SolutionTest {
         ListNode expResult = new ListNode(9);
         ListNode result = instance.addTwoNumbers(l1, l2);
         ListNode newResult = result;
-        
+
         while (newResult != null) {
             System.out.println(" ->" + newResult.val);
             newResult = newResult.next;
@@ -59,8 +58,8 @@ public class SolutionTest {
 
         assertEquals(expResult.val, result.val);
     }
-    
-        @Test
+
+    @Test
     public void testAddTwoNumbersGreaterThanTen() {
         System.out.println("add Two Single Digit Numbers Greater than ten \n");
         ListNode l1 = new ListNode(6);
@@ -70,7 +69,7 @@ public class SolutionTest {
         expResult.next = new ListNode(1);
         ListNode result = instance.addTwoNumbers(l1, l2);
         ListNode newResult = result;
-        
+
         while (newResult != null) {
             System.out.println(" ->" + newResult.val);
             newResult = newResult.next;
@@ -78,6 +77,31 @@ public class SolutionTest {
 
         assertEquals(expResult.val, result.val);
     }
-    
-    
+
+    @Test
+    public void testAddTwoThreeDigitNumbers() {
+
+        System.out.println("add Two Single Digit Numbers Less than ten \n");
+        ListNode l1 = new ListNode(2);
+        l1.next = new ListNode(4);
+        l1.next.next = new ListNode(3);
+
+        ListNode l2 = new ListNode(5);
+        l1.next = new ListNode(6);
+        l1.next.next = new ListNode(4);
+
+        Solution instance = new Solution();
+        ListNode expResult = new ListNode(7);
+        expResult.next = new ListNode(0);
+        expResult.next.next = new ListNode(8);
+
+        ListNode result = instance.addTwoNumbers(l1, l2);
+        ListNode newResult = result;
+
+        while (newResult != null) {
+            System.out.println(" ->" + newResult.val);
+            newResult = newResult.next;
+        }
+    }
+
 }
