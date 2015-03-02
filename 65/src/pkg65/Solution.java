@@ -94,12 +94,23 @@ public class Solution {
 
                     if (counter < length - 1) {
 
-                        if (!Character.isDigit(ch[counter + 1])) {
+                        char nextChar = ch[counter + 1];
+
+                        if (!Character.isDigit(nextChar)) {
                             //handles 46.e3
-                            if (counter < length - 3) {
-                                if (ch[counter + 1] == 'e' && !Character.isDigit(ch[counter + 2])) {
-                                    isValid = false;
+                            if (counter <= length - 3) {
+                                
+                                if (nextChar == 'e') {
+                                    
+                                    if (!Character.isDigit(ch[counter + 2])) {
+                                        isValid = false;
+                                    }
+                                    if (counter == 0){
+                                        
+                                        isValid = false;
+                                    }
                                 }
+
 
                             } else {
                                 isValid = false;
