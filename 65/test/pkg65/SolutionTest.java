@@ -191,7 +191,7 @@ public class SolutionTest {
         boolean result = instance.isNumber(s);
         assertEquals(expResult, result);
     }
-    
+
     @Test
     public void testIsNumberBadExponent3() {
 
@@ -203,7 +203,6 @@ public class SolutionTest {
         boolean result = instance.isNumber(s);
         assertEquals(expResult, result);
     }
-   
 
     @Test
     public void testIsNumberBadDecimal() {
@@ -216,6 +215,7 @@ public class SolutionTest {
         boolean result = instance.isNumber(s);
         assertEquals(expResult, result);
     }
+
     @Test
     public void testIsNumberPlus() {
 
@@ -227,10 +227,10 @@ public class SolutionTest {
         boolean result = instance.isNumber(s);
         assertEquals(expResult, result);
     }
-       @Test
+
+    @Test
     public void testIsNumberBadExponent4() {
 
-        //Hex Notation
         System.out.println("46.e3");
         String s = "46.e3";
         Solution instance = new Solution();
@@ -238,6 +238,49 @@ public class SolutionTest {
         boolean result = instance.isNumber(s);
         assertEquals(expResult, result);
     }
+
+    @Test
+    public void testIsNumberBadExponent5() {
+
+        String s = "6e6.5";
+        System.out.println(s);
+        Solution instance = new Solution();
+        boolean expResult = false;
+        boolean result = instance.isNumber(s);
+        assertEquals(expResult, result);
+    }
+
+    @Test
+    public void testIsNumberExponent6() {
+
+        String s = " 005047e+6";
+        System.out.println(s);
+        Solution instance = new Solution();
+        boolean expResult = true;
+        boolean result = instance.isNumber(s);
+        assertEquals(expResult, result);
+    }
+        @Test
+    public void testIsNumberBadExponent7() {
+
+        String s = "4e+";
+        System.out.println(s);
+        Solution instance = new Solution();
+        boolean expResult = false;
+        boolean result = instance.isNumber(s);
+        assertEquals(expResult, result);
+    }
     
     
+    
+            @Test
+    public void testIsNumberExponent8() {
+
+        String s = "32.e-80123";
+        System.out.println(s);
+        Solution instance = new Solution();
+        boolean expResult = true;
+        boolean result = instance.isNumber(s);
+        assertEquals(expResult, result);
+    }
 }

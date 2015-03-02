@@ -18,7 +18,7 @@ public class Main {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        String s = "46.e3";
+        String s = "32.e-80123";
         Solution instance = new Solution();
         boolean expResult = true;
         boolean result = instance.isNumber(s);

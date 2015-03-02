@@ -79,7 +79,7 @@ public class Solution {
 
                 if (currentChar == '.') {
 
-                    if (hasPreviousDecimal || isHex) {
+                    if (hasPreviousDecimal || isHex || hasPreviousE) {
 
                         isValid = false;
 
@@ -102,8 +102,10 @@ public class Solution {
                                 
                                 if (nextChar == 'e') {
                                     
-                                    if (!Character.isDigit(ch[counter + 2])) {
+                                    if (!Character.isDigit(ch[counter + 2]) &&( ch[counter + 2]!='+' && ch[counter + 2]!='-')) {
+                                        
                                         isValid = false;
+                                        
                                     }
                                     if (counter == 0){
                                         
@@ -151,6 +153,13 @@ public class Solution {
                         } else if (counter < length - 1) {
                             if (ch[counter + 1] == '.') {
                                 isValid = false;
+                            } else if (ch[counter+1] == '+' || ch[counter+1] == '-') {
+                                //skip the next character
+                              counter +=1;  
+                              if (counter == length -1) {
+                                  
+                                  isValid = false;
+                              }
                             }
 
                         }
